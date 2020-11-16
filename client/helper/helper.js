@@ -15,7 +15,7 @@ const sendAjax =(type, action, data, success)=>{
         url: action,
         data: data,
         dataType: "json",
-        sucess: success,
+        success: success,
         error: function(xhr, status, error){
             let messageObj = JSON.parse(xhr.responseText);
             handleError(messageObj.parse);

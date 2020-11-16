@@ -1,4 +1,3 @@
-const { create } = require("express-handlebars");
 
 const handleLogin = (e) =>{
     e.preventDefault();
@@ -34,7 +33,7 @@ const handleSignup =(e)=>{
 const LoginWindow = (props) =>{
     return (
         <form id="loginForm" name="loginForm"
-            onsubmit = {handleLogin}
+            onSubmit = {handleLogin}
             action = "/login"
             method="POST"
             className="mainForm"
@@ -53,7 +52,7 @@ const LoginWindow = (props) =>{
 const SignupWindow = (props) =>{
     return (
         <form id="signupForm" name="signupForm"
-            onsubmit = {handleSignup}
+            onSubmit = {handleSignup}
             action = "/signup"
             method="POST"
             className="mainForm"
@@ -72,15 +71,25 @@ const SignupWindow = (props) =>{
 }
 
 const createLoginWindow = (csrf) => {
+    //debugger;
     ReactDOM.render(
         <LoginWindow csrf={csrf}/>,
+        document.querySelector("#content")
+        
+    );
+}
+
+
+const createSignupWindow = (csrf) => {
+    ReactDOM.render(
+        <SignupWindow csrf={csrf}/>,
         document.querySelector("#content")
     );
 }
 
 const setup = (csrf) => {
-    const loginButton = document.querySelector('#loginButton');
-    const signupButton = document.querySelector('#signupButton');
+    const loginButton = document.querySelector("#loginButton");
+    const signupButton = document.querySelector("#signupButton");
 
     signupButton.addEventListener("click", (e) =>{
         e.preventDefault();
