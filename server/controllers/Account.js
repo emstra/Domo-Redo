@@ -25,6 +25,7 @@ const login = (request, response) => {
 
   return Account.AccountModel.authenticate(username, password, (err, account) => {
     if (err || !account) {
+      console.log(password);
       return res.status(401).json({ error: 'Wrong username or password' });
     }
 

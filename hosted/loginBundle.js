@@ -50,7 +50,7 @@ var LoginWindow = function LoginWindow(props) {
   }, "Password: "), /*#__PURE__*/React.createElement("input", {
     id: "pass",
     type: "password",
-    name: "password",
+    name: "pass",
     placeholder: "password"
   }), /*#__PURE__*/React.createElement("input", {
     type: "hidden",
