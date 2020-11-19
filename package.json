@@ -10,9 +10,11 @@
   "scripts": {
     "buildLoginBundle": "babel ./client/login ./client/helper --presets @babel/preset-react --out-file ./hosted/loginBundle.js",
     "buildAppBundle": "babel ./client/app ./client/helper --presets @babel/preset-react --out-file ./hosted/bundle.js",
-    "build": "npm run buildLoginBundle && npm run buildAppBundle",
+    "buildUserBundle" : "babel ./client/users ./client/helper --presets @babel/preset-react --out-file ./hosted/userBundle.js",
+    "build": "npm run buildLoginBundle && npm run buildAppBundle && npm run buildUserBundle",
     "watchLoginBundle": "babel --watch ./client/login ./client/helper --presets @babel/preset-react --out-file ./hosted/loginBundle.js",
     "watchAppBundle": "babel --watch ./client/app ./client/helper --presets @babel/preset-react --out-file ./hosted/bundle.js",
+    "watchUserBundle": "babel --watch ./client/users ./client/helper --presets @babel/preset-react --out-file ./hosted/userBundle.js",
     "nodemon": "nodemon --watch ./server ./server/app.js",
     "start": "node ./server/app.js",
     "pretest": "eslint ./server --fix",
@@ -24,7 +26,7 @@
     "Redis",
     "Login"
   ],
-  "author": "Cody Van De Mark",
+  "author": "Eli Straut",
   "license": "Apache 2.0",
   "devDependencies": {
     "@babel/cli": "^7.12.1",

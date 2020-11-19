@@ -81,6 +81,10 @@ AccountSchema.statics.authenticate = (username, password, callback) => {
   });
 };
 
+AccountSchema.statics.findAll = (callback) => {
+  AccountModel.find().select('username _id').lean().exec(callback);
+};
+
 AccountModel = mongoose.model('Account', AccountSchema);
 
 module.exports.AccountModel = AccountModel;

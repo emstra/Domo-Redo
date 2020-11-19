@@ -25,6 +25,12 @@ const DomoSchema = new mongoose.Schema({
     required: true,
   },
 
+  teeth: {
+    type: Number,
+    min: 0,
+    required: true,
+  },
+
   owner: {
     type: mongoose.Schema.ObjectId,
     required: true,
@@ -47,7 +53,7 @@ DomoSchema.statics.findByOwner = (ownerID, callback) => {
     owner: convertID(ownerID),
   };
 
-  return DomoModel.find(search).select('name age').lean().exec(callback);
+  return DomoModel.find(search).select('name age teeth').lean().exec(callback);
 };
 
 DomoModel = mongoose.model('Domo', DomoSchema);
