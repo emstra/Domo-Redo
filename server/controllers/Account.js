@@ -102,9 +102,13 @@ const showUsers = (request, response) => {
     }
 
     const docsToReturn = [];
-    for (const user of docs) {
+    // for (const user of docs) {
+    //   docsToReturn.push({ username: user.username, userid: user._id });
+    // }
+
+    docs.forEach((user) => {
       docsToReturn.push({ username: user.username, userid: user._id });
-    }
+    });
 
     console.dir(docsToReturn);
 
