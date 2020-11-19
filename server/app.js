@@ -58,7 +58,6 @@ const redisClient = redis.createClient({
   password: redisPASS,
 });
 
-
 const router = require('./router.js');
 
 const app = express();
@@ -70,7 +69,6 @@ app.use(bodyParser.urlencoded({
   extended: true,
 }));
 // Pull in routes
-
 
 app.use(session({
   key: 'sessionid',

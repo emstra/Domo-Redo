@@ -80,19 +80,46 @@ const signup = (request, response) => {
   });
 };
 
-const getToken =(request, response)=>{
+const getToken = (request, response) => {
   const req = request;
   const res = response;
 
   const csrfJSON = {
     csrfToken: req.csrfToken(),
   };
-  console.log("CSRF JSON" + csrfJSON.csrfToken)
-  res.json(csrfJSON)
-}
+  console.log(`CSRF JSON${csrfJSON.csrfToken}`);
+  res.json(csrfJSON);
+};
+
+const showUsers = (request, response) => {
+  // const req = request;
+  const res = response;
+
+  return Account.AccountModel.findAll((err, docs) => {
+    if (err) {
+      console.log(err);
+      return res.status(400);
+    }
+
+    const docsToReturn = [];
+    for (const user of docs) {
+      docsToReturn.push({ username: user.username, userid: user._id });
+    }
+
+    console.dir(docsToReturn);
+
+    return res.json({ users: docsToReturn });
+  });
+};
+
+const usersPage = (req, res) => {
+  res.render('users', { csrfToken: req.csrfToken() });
+};
 
 module.exports.loginPage = loginPage;
 module.exports.login = login;
+module.exports.usersPage = usersPage;
+module.exports.showUsers = showUsers;
 module.exports.logout = logout;
 module.exports.signup = signup;
 module.exports.getToken = getToken;
